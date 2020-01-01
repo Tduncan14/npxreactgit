@@ -4,4 +4,6 @@
 .logo{
     height:64px;
     width:auto;
+    display:inline-block;
+    margin-top:25px
 }

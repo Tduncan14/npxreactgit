@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import Link from '../components/Link/Link';
+import './Profile.css'; 
+import List from '../components/List/List.js'
 
 class Profile extends Component {
 
@@ -43,20 +46,24 @@ class Profile extends Component {
 
         const {data,loading} = this.state;
 
+        const items = [
+            {label:'html_url',value: <Link url={data.html_url} title='Github URL' />},
+            {label:'repos_url', value:data.repos_url},
+            { label: 'name', value: data.name},
+            { label: 'company', value: data.company?data.company:'Treek' },
+            { label: 'location', value:   data.location?data.location:'Chicago' },
+            { label: 'email', value: data.email? data.email:'nbatre1@yahoo.com' },
+            { label: 'bio', value: data.bio?data.bio:'keep moving forward' }
+        ]
+
         return(
-           <div>
-               <ul>
-                <li>avatar_url:{data.avatar_url}</li>
-                <li>html_url:{data.html_url}</li>
-                <li>repos_url:{data.repos_url}</li>
-                <li>name:{data.name? data.name : 'Treek'}</li>
-                <li>location:{data.location ? data.location : 'Chicago'}</li>
-                <li>email:{data.email ? data.email : 'nbatre1@yahoo.com'}</li>
-                <li>
-                    bio: {data.bio? data.bro : 'Keep moving forward always'}
-                </li>
-               </ul>
+           
+               <div className="Profile-container">
+                   <img className='Profile-avatar' src={data.avatar_url} alt="avatar"/>
+               
+              <List items={items} />
            </div>
+           
         )
      }
 

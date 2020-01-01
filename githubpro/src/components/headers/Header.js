@@ -1,9 +1,9 @@
 import React from 'react';
 import './Header.css';
+import PropTypes from 'prop-types';
 
 
-const Header = () => (
-
+const Header = ({logo}) => (
     <header className='App-header'>
     
      <p>
@@ -20,5 +20,12 @@ const Header = () => (
  </header>
 
 )
+
+
+// Header.PropTypes{
+
+//   title:PropTypes.string
+
+// }.isrequired;
 
 export default Header;

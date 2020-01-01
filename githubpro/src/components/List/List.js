@@ -22,13 +22,13 @@ const List = ({items}) => (
 
     
 
-    <ul>
+    <ListWrapper>
     { items.map(item =>
-        <li key={item.label}>
+        <ListItem key={item.label}>
             <strong>{item.label}</strong>
             {item.value}
-    </li>)}
-    </ul>
+    </ListItem>)}
+    </ListWrapper>
 )
 
 

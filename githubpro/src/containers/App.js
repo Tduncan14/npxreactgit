@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import Header from '../components/Headers/Header';
+import styled from 'styled-components';
 import Profile from './Profile';
 
 
@@ -9,14 +9,17 @@ import Profile from './Profile';
 
 //avatar_url, html_url, repos_url, name, company, location, email, and bio, where the value of the repos_url
 
+const AppWrapper = styled.div`
+text-align:center`;
+
 
 function App() {
   return (
-    <div className="App">
+    <AppWrapper>
       <Header />
       <Profile />
    
-    </div>
+    </AppWrapper>
   );
 }
 

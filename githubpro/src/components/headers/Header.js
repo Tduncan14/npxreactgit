@@ -1,13 +1,31 @@
 import React from 'react';
-import './Header.css';
+import styled from 'styled-components';
 // import PropTypes from './node_modules/prop-types';
-import Link from '../Link/Link'
 import logo from '../../images/Octocat.png';
 
+
+const HeaderWrapper = styled.div`
+
+background-color:#282c34;
+height:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+font-size:cal(10px + 2vmin)
+color:white;
+`
+
+const Logo = styled.img`
+height:64px;
+pointer-events:none;
+margin-top:10px;`;
+
+
 const Header = () => (
-    <header className='App-header'>
+    <HeaderWrapper>
     
-    <img className="logo"src={logo} alt="this is the logo" />
+    <Logo className="logo"src={logo} alt="this is the logo" />
 
     <h1>
       My Github Portfolio
@@ -15,7 +33,7 @@ const Header = () => (
      
 
 
- </header>
+ </HeaderWrapper>
 
 )
 

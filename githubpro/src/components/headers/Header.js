@@ -1,22 +1,20 @@
 import React from 'react';
 import './Header.css';
-import PropTypes from 'prop-types';
+// import PropTypes from './node_modules/prop-types';
+import Link from '../Link/Link'
+import logo from '../../images/Octocat.png';
 
-
-const Header = ({logo}) => (
+const Header = () => (
     <header className='App-header'>
     
-     <p>
-       Edit <code>src/App.js</code> and save to reload.
-     </p>
-     <a
-       className='App-link'
-       href='https://reactjs.org'
-       target='_blank'
-       rel='noopener noreferrer'
-     >
-       Learn React
-     </a>
+    <img className="logo"src={logo} alt="this is the logo" />
+
+    <h1>
+      My Github Portfolio
+    </h1>
+     
+
+
  </header>
 
 )

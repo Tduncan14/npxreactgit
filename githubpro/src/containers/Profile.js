@@ -73,7 +73,7 @@ class Profile extends Component {
         console.log(this.state,'this is the data')
 
 
-        const {data,loading,repos} = this.state;
+        const {data,loading,repos,error} = this.state;
 
         if(loading || error ){
             return<div>

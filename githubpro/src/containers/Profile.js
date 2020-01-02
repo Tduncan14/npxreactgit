@@ -19,13 +19,16 @@ class Profile extends Component {
        super()
        this.state={
            data:{},
-           loading:true
+           loading:true,
+           repos:[],
+           error:''
        }
    }
 
 
    async componentDidMount(){
 
+    try{
      const profile = await fetch('https://api.github.com/users/tduncan14')
 
 
@@ -33,28 +36,50 @@ class Profile extends Component {
 
 
     if(profileJSON){
+
+        const repositories = await fetch(profileJSON.repos_url);
+        const repositoriesJSON = await repositories.json();
     
         this.setState({
             data:profileJSON,
-            loading:false
+            loading:false,
+            repos:repositoriesJSON
+        })
+    }
+}
+
+    catch(error){
+        this.setState({
+
+            loading:false,
+            error:error.message
         })
 
 
-
-
-
-
     }
+
+
+
+
+
+
+    
    }
 
 
      render(){
 
 
-        console.log(this.state.data,'this is the data')
+        console.log(this.state,'this is the data')
 
 
-        const {data,loading} = this.state;
+        const {data,loading,repos} = this.state;
+
+        if(loading || error ){
+            return<div>
+                {loading ? 'Loading...' :error}
+            </div>
+        }
 
         const items = [
             {label:'html_url',value: <Link url={data.html_url} title='Github URL' />},
@@ -66,12 +91,19 @@ class Profile extends Component {
             { label: 'bio', value: data.bio?data.bio:'keep moving forward' }
         ]
 
+        const projects = repos.map(repo =>({
+            label:repo.name,
+            value:<Link url={repo.html_url} title='Github URL'/>
+
+        }))
+
         return(
            
                <ProfileWrapper>
                    <Avatar  src={data.avatar_url} alt="avatar"/>
                
-              <List items={items} />
+              <List title={'Profile'}items={items} />
+              <List title={'Projects'} items={projects} />
 
               </ProfileWrapper>
 

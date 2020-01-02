@@ -18,16 +18,23 @@ const Label = styled.span`
    font-weight:strong;
 `;
 
-const List = ({items}) => (
+const List = ({items,title}) => (
 
     
 
     <ListWrapper>
+    <h1>{title}</h1>
+        
+                 
+
     { items.map(item =>
+    <>
+          
         <ListItem key={item.label}>
             <strong>{item.label}</strong>
             {item.value}
-    </ListItem>)}
+    </ListItem>
+    </>)}
     </ListWrapper>
 )
 
